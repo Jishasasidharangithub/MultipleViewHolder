@@ -28,7 +28,12 @@
         tools:layout="@layout/fragment_sign_up" />
     <fragment
         android:id="@+id/orderInfoFragment"
-        android:name="com.template.tmp02.OrderInfoFragment"
+        android:name="com.template.tmp02.ui.fragment.OrderInfoFragment"
         android:label="fragment_order_info"
         tools:layout="@layout/fragment_order_info" />
+    <fragment
+        android:id="@+id/categoryListFragment"
+        android:name="com.template.tmp02.ui.fragment.CategoryListFragment"
+        android:label="fragment_category_list"
+        tools:layout="@layout/fragment_category_list" />
 </navigation>

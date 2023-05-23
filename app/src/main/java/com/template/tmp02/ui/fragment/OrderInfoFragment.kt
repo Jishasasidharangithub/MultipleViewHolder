@@ -1,4 +1,4 @@
-package com.template.tmp02
+package com.template.tmp02.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
