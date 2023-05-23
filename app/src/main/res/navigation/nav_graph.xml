@@ -26,4 +26,9 @@
         android:name="com.template.tmp02.ui.fragment.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/orderInfoFragment"
+        android:name="com.template.tmp02.OrderInfoFragment"
+        android:label="fragment_order_info"
+        tools:layout="@layout/fragment_order_info" />
 </navigation>

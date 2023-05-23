@@ -208,7 +208,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
-        style="@style/largeTextSemiBold"
+        style="@style/largeTextRegular"
         android:layout_width="0dp"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginHorizontal="@dimen/_15sdp"
