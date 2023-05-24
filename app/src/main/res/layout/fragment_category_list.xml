@@ -6,83 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.CategoryListFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cslCardiacCareToolbar"
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_category" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_250sdp"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/ivBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:src="@drawable/ic_arrow_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvToolbarTitle"
-            style="@style/largeTextSemiBold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:text="CARDIAC CARE"
-            app:layout_constraintBottom_toBottomOf="@+id/ivBack"
-            app:layout_constraintStart_toEndOf="@+id/ivBack"
-            app:layout_constraintTop_toTopOf="@+id/ivBack" />
-
-        <ImageView
-            android:id="@+id/ivSearch"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:src="@drawable/search"
-            app:tint="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/tvToolbarTitle"
-            app:layout_constraintStart_toEndOf="@+id/tvToolbarTitle"
-            app:layout_constraintTop_toTopOf="@+id/tvToolbarTitle" />
-
-        <ImageView
-            android:id="@+id/ivBag"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bag"
-            app:tint="@color/black"
-            android:layout_marginStart="@dimen/_15sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/ivSearch"
-            app:layout_constraintStart_toEndOf="@+id/ivSearch"
-            app:layout_constraintTop_toTopOf="@+id/ivSearch" />
-
-        <ImageView
-            android:id="@+id/ivFilter"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/filter"
-            app:tint="@color/black"
-            android:layout_marginStart="@dimen/_15sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/ivBag"
-            app:layout_constraintStart_toEndOf="@+id/ivBag"
-            app:layout_constraintTop_toTopOf="@+id/ivBag" />
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_12ssp"
-        android:orientation="horizontal"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cslCardiacCareToolbar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_main_category_rcv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

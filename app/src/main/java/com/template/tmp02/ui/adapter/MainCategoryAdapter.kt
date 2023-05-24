@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.template.tmp02.databinding.ItemMainCategoryRcvBinding
+import com.template.tmp02.databinding.ItemMainViewpagerBinding
 import com.template.tmp02.ui.modelclass.MainCategoryData
 import com.template.tmp02.ui.viewholders.MainCategoryViewHolders
 
@@ -13,18 +14,21 @@ class MainCategoryAdapter : ListAdapter<MainCategoryData, MainCategoryViewHolder
     companion object {
         const val VIEW_ONE = 1
         const val VIEW_TWO = 2
+        const val VIEW_THREE = 3
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is MainCategoryData.ShopByCategory -> VIEW_ONE
-            is MainCategoryData.ProductByCategory -> VIEW_TWO
+            is MainCategoryData.BannerCategory -> VIEW_ONE
+            is MainCategoryData.ShopByCategory -> VIEW_TWO
+            is MainCategoryData.ProductByCategory -> VIEW_THREE
+            else -> throw java.lang.Exception("Unknown Get item position!!")
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainCategoryViewHolders {
         return when (viewType) {
-            VIEW_ONE -> {
+            VIEW_TWO -> {
                 MainCategoryViewHolders.ShopByCategoryViewHolder(
                     ItemMainCategoryRcvBinding.inflate(
                         LayoutInflater.from(parent.context),
@@ -33,9 +37,18 @@ class MainCategoryAdapter : ListAdapter<MainCategoryData, MainCategoryViewHolder
                     )
                 )
             }
-            VIEW_TWO -> {
+            VIEW_THREE -> {
                 MainCategoryViewHolders.ProductByCategoryViewHolder(
                     ItemMainCategoryRcvBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+            VIEW_ONE -> {
+                MainCategoryViewHolders.BannerCategoryViewHolder(
+                    ItemMainViewpagerBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -49,8 +62,10 @@ class MainCategoryAdapter : ListAdapter<MainCategoryData, MainCategoryViewHolder
     override fun onBindViewHolder(holder: MainCategoryViewHolders, position: Int) {
         val data = getItem(position)
         when(holder){
+            is MainCategoryViewHolders.BannerCategoryViewHolder -> holder.bind(data as MainCategoryData.BannerCategory)
             is MainCategoryViewHolders.ShopByCategoryViewHolder -> holder.bind(data as MainCategoryData.ShopByCategory)
             is MainCategoryViewHolders.ProductByCategoryViewHolder -> holder.bind(data as MainCategoryData.ProductByCategory)
+
         }
     }
 
@@ -60,12 +75,16 @@ class MainCategoryAdapter : ListAdapter<MainCategoryData, MainCategoryViewHolder
             newItem: MainCategoryData
         ): Boolean {
             return when {
+                oldItem is MainCategoryData.BannerCategory && newItem is MainCategoryData.BannerCategory -> {
+                    oldItem.id == newItem.id
+                }
                 oldItem is MainCategoryData.ShopByCategory && newItem is MainCategoryData.ShopByCategory -> {
                     oldItem.id == newItem.id
                 }
                 oldItem is MainCategoryData.ProductByCategory && newItem is MainCategoryData.ProductByCategory -> {
                     oldItem.id == newItem.id
                 }
+
                 else -> false
             }
         }
@@ -75,12 +94,16 @@ class MainCategoryAdapter : ListAdapter<MainCategoryData, MainCategoryViewHolder
             newItem: MainCategoryData
         ): Boolean {
             return when {
+                oldItem is MainCategoryData.BannerCategory && newItem is MainCategoryData.BannerCategory -> {
+                    oldItem == newItem
+                }
                 oldItem is MainCategoryData.ShopByCategory && newItem is MainCategoryData.ShopByCategory -> {
                     oldItem == newItem
                 }
                 oldItem is MainCategoryData.ProductByCategory && newItem is MainCategoryData.ProductByCategory -> {
                     oldItem == newItem
                 }
+
                 else -> false
             }
         }
