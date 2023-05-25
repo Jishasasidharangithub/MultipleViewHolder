@@ -1,9 +1,7 @@
 package com.template.tmp02.ui.viewholders
 
 import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import androidx.viewpager2.widget.ViewPager2
@@ -11,13 +9,10 @@ import coil.load
 import com.template.tmp02.R
 import com.template.tmp02.databinding.ItemMainCategoryRcvBinding
 import com.template.tmp02.databinding.ItemMainViewpagerBinding
-import com.template.tmp02.databinding.ItemViewpagerBannerBinding
 import com.template.tmp02.ui.adapter.BannerCategoryAdapter
 import com.template.tmp02.ui.adapter.ProductByCategoryAdapter
 import com.template.tmp02.ui.adapter.ShopByCategoryAdapter
 import com.template.tmp02.ui.modelclass.MainCategoryData
-import com.template.tmp02.ui.modelclass.ProductByCategoryItem
-import com.template.tmp02.ui.modelclass.ShopByCategoryItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

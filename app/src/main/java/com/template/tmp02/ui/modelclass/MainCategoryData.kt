@@ -4,7 +4,7 @@ sealed class MainCategoryData {
     class BannerCategory(
         val id:Int,
         val bannerList: List<BannerCategoryItem>
-    ):MainCategoryData()
+    ): MainCategoryData()
     class ShopByCategory(
         val id: Int,
         val title: String,
@@ -15,7 +15,7 @@ sealed class MainCategoryData {
         val id:Int,
         val title: String,
         val productList:List<ProductByCategoryItem>
-    ):MainCategoryData()
+    ): MainCategoryData()
 
 
 }

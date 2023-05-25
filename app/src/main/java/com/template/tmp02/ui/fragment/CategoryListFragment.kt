@@ -5,14 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.template.tmp02.R
 import com.template.tmp02.databinding.FragmentCategoryListBinding
-import com.template.tmp02.databinding.FragmentOrderInfoBinding
 import com.template.tmp02.ui.adapter.MainCategoryAdapter
-import com.template.tmp02.ui.adapter.MainCategoryAdapter.Companion.VIEW_ONE
 import com.template.tmp02.ui.modelclass.BannerCategoryItem
 import com.template.tmp02.ui.modelclass.MainCategoryData
 import com.template.tmp02.ui.modelclass.ProductByCategoryItem

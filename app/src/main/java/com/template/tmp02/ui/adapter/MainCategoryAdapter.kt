@@ -9,7 +9,8 @@ import com.template.tmp02.databinding.ItemMainViewpagerBinding
 import com.template.tmp02.ui.modelclass.MainCategoryData
 import com.template.tmp02.ui.viewholders.MainCategoryViewHolders
 
-class MainCategoryAdapter : ListAdapter<MainCategoryData, MainCategoryViewHolders>(DiffUtilCallback()) {
+class MainCategoryAdapter :
+    ListAdapter<MainCategoryData, MainCategoryViewHolders>(DiffUtilCallback()) {
 
     companion object {
         const val VIEW_ONE = 1
@@ -61,7 +62,7 @@ class MainCategoryAdapter : ListAdapter<MainCategoryData, MainCategoryViewHolder
 
     override fun onBindViewHolder(holder: MainCategoryViewHolders, position: Int) {
         val data = getItem(position)
-        when(holder){
+        when (holder) {
             is MainCategoryViewHolders.BannerCategoryViewHolder -> holder.bind(data as MainCategoryData.BannerCategory)
             is MainCategoryViewHolders.ShopByCategoryViewHolder -> holder.bind(data as MainCategoryData.ShopByCategory)
             is MainCategoryViewHolders.ProductByCategoryViewHolder -> holder.bind(data as MainCategoryData.ProductByCategory)
