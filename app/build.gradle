@@ -50,11 +50,13 @@ dependencies {
     //NAVIGATION
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-
     //image loader
-    implementation("io.coil-kt:coil:2.2.2")
-
+    implementation("io.coil-kt:coil:2.3.0")
+    //SWIPE RECYCLER VIEW
     implementation 'com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:1.1.1'
+
+    //SWIPE DECORATOR
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.4'
 
 
     testImplementation 'junit:junit:4.13.2'

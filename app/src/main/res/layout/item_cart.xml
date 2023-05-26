@@ -16,18 +16,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/llCart"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:background="@color/green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/ivIncrement"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:padding="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:src="@drawable/ic_add" />
+
+            <TextView
+                android:id="@+id/tvCartNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="0"
+                android:gravity="center"
+                style="@style/mediumTextBold"
+                />
+            <ImageView
+                android:id="@+id/ivDecrement"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:src="@drawable/ic_minus" />
+
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/ivCart"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:src="@drawable/product1"
             android:padding="@dimen/_12sdp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/llCart"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvCartTitle"
-            style="@style/largeTextSemiBold"
+            style="@style/mediumTextBold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
