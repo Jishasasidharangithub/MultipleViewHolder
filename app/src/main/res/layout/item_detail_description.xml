@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tvDetailTitle"
+        style="@style/mediumTextBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:text="SECOND DOUBLE STRENGTH FISH OIL"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvProductDetail"
+        style="@style/mediumTextMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="1200 CAPSULES 60'S"
+        app:layout_constraintStart_toStartOf="@+id/tvDetailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailTitle" />
+
+    <RatingBar
+        android:id="@+id/rBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="4"
+        android:theme="@style/RatingBar"
+        app:layout_constraintStart_toStartOf="@+id/tvProductDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductDetail" />
+
+    <TextView
+        android:id="@+id/tvTotalRating"
+        style="@style/normalTextRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="(Based on 5 reviews)"
+        app:layout_constraintStart_toEndOf="@+id/rBar"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductDetail" />
+
+    <TextView
+        android:id="@+id/tvAED"
+        style="@style/mediumTextMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="AED 60.50"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@+id/rBar"
+        app:layout_constraintTop_toBottomOf="@+id/rBar" />
+
+    <TextView
+        android:id="@+id/tvAvailable"
+        style="@style/normalTextRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Available:"
+        android:textColor="#6C6D6E"
+        app:layout_constraintStart_toStartOf="@+id/tvAED"
+        app:layout_constraintTop_toBottomOf="@+id/tvAED" />
+
+    <TextView
+        android:id="@+id/tvStock"
+        style="@style/normalTextSemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="In Stock"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toEndOf="@+id/tvAvailable"
+        app:layout_constraintTop_toBottomOf="@+id/tvAED" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/normalTextRegular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:justificationMode="inter_word"
+        android:text="description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvAvailable"
+        app:layout_constraintTop_toBottomOf="@+id/tvAvailable" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardElevation="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@+id/tvDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvBenefits"
+                style="@style/mediumTextBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Benefits:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBenefits"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:clipToPadding="true"
+                tools:listitem="@layout/item_benefits"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvBenefits" />
+
+            <TextView
+                android:id="@+id/tvHowToUse"
+                style="@style/mediumTextBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="How To Use::"
+                app:layout_constraintStart_toStartOf="@+id/rvBenefits"
+                app:layout_constraintTop_toBottomOf="@+id/rvBenefits" />
+
+            <TextView
+                android:id="@+id/tvHowToUseDescription"
+                style="@style/normalTextRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:justificationMode="inter_word"
+                android:text="description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvHowToUse"
+                app:layout_constraintTop_toBottomOf="@+id/tvHowToUse"
+                android:layout_marginBottom="@dimen/_15sdp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cslCartBtn"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintStart_toStartOf="@+id/cvDetail"
+        app:layout_constraintTop_toBottomOf="@+id/cvDetail"
+        android:background="@drawable/cart_btn_bg"
+        android:layout_marginTop="@dimen/_20sdp">
+
+        <ImageView
+            android:id="@+id/ivDecrement"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_minus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black"/>
+        <View
+            android:id="@+id/view1"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:background="@color/Grey"
+            app:layout_constraintStart_toEndOf="@+id/ivDecrement"
+            app:layout_constraintTop_toTopOf="@+id/cslCartBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/cslCartBtn"
+            android:layout_marginStart="@dimen/_5sdp"/>
+
+        <TextView
+            android:id="@+id/tvCartNumber"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:hint="0"
+            android:gravity="center"
+            style="@style/mediumTextMedium"
+            app:layout_constraintBottom_toBottomOf="@+id/cslCartBtn"
+            app:layout_constraintStart_toEndOf="@+id/view1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:background="@color/Grey"
+            app:layout_constraintStart_toEndOf="@+id/tvCartNumber"
+            app:layout_constraintTop_toTopOf="@+id/cslCartBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/cslCartBtn"
+            android:layout_marginStart="@dimen/_5sdp"/>
+
+        <ImageView
+            android:id="@+id/ivIncrement"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="@+id/cslCartBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="@+id/cslCartBtn"
+            app:tint="@color/black" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cslPlaceOrder"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:background="@color/green"
+        app:layout_constraintStart_toEndOf="@+id/cslCartBtn"
+        app:layout_constraintTop_toBottomOf="@+id/cvDetail"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+
+        <ImageView
+            android:id="@+id/ivCart"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/bag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"/>
+
+        <TextView
+            style="@style/normalTextRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ADD TO CART"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCart"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_favorite"
+        app:layout_constraintTop_toBottomOf="@+id/cslCartBtn"
+        app:layout_constraintStart_toStartOf="@+id/cslCartBtn"
+        android:layout_marginTop="@dimen/_15sdp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to wishlist"
+        style="@style/normalTextRegular"
+        app:layout_constraintStart_toEndOf="@+id/ivFavorite"
+        app:layout_constraintTop_toBottomOf="@+id/cslCartBtn"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

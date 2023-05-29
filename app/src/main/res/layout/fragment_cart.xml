@@ -24,27 +24,30 @@
 
     <EditText
         android:id="@+id/etCouponCode"
+        style="@style/mediumTextMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Your Coupon code here:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:maxLines="1"
-        android:layout_marginTop="@dimen/_25sdp"
-        app:layout_constraintTop_toBottomOf="@+id/rvCart"
-        android:background="@color/white"
-        android:textColor="@color/black"
         android:layout_marginHorizontal="@dimen/_25sdp"
-        style="@style/mediumTextMedium"/>
+        android:layout_marginTop="@dimen/_25sdp"
+        android:background="@color/white"
+        android:hint="Enter Your Coupon code here:"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/cslPlaceOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvCart" />
+
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/Grey"
-        android:layout_marginTop="@dimen/_4sdp"
-        app:layout_constraintTop_toBottomOf="@+id/etCouponCode"
         android:layout_marginHorizontal="@dimen/_25ssp"
-        />
+        android:layout_marginTop="@dimen/_4sdp"
+        android:background="@color/Grey"
+
+        app:layout_constraintTop_toBottomOf="@+id/etCouponCode"
+        tools:layout_editor_absoluteX="32dp" />
 
     <TextView
         android:id="@+id/tvTotalPrice"
@@ -54,6 +57,7 @@
         android:layout_marginTop="@dimen/_25sdp"
         android:text="TOTAL PRICE"
         android:textColor="@color/Grey"
+        app:layout_constraintBottom_toTopOf="@+id/cslPlaceOrder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.219"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,14 +65,15 @@
 
     <TextView
         android:id="@+id/tvToalPrice"
+        style="@style/mediumTextMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/mediumTextMedium"
-        android:layout_marginTop="@dimen/_25sdp"
         android:layout_marginStart="@dimen/_45sdp"
-        app:layout_constraintTop_toBottomOf="@+id/view1"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:text="$ 584.5"
+        app:layout_constraintBottom_toTopOf="@+id/cslPlaceOrder"
         app:layout_constraintStart_toEndOf="@+id/tvTotalPrice"
-        android:text="$ 584.5"/>
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cslPlaceOrder"

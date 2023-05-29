@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.template.tmp02.databinding.*
+import com.template.tmp02.ui.modelclass.CartItem
 import com.template.tmp02.ui.modelclass.HomeMainCategoryData
 import com.template.tmp02.ui.modelclass.MainCategoryData
 import com.template.tmp02.ui.viewholders.HomeCategoryViewHolder

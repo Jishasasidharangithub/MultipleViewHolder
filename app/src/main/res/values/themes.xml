@@ -172,4 +172,11 @@
         <item name="android:textColor">@color/text_color</item>
     </style>
 
+    //RATING BAR
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/Grey</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+
 </resources>
