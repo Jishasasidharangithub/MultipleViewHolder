@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.template.tmp02.R
 import com.template.tmp02.databinding.FragmentCategoryListBinding
@@ -31,6 +32,7 @@ class CategoryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        handleEvents()
     }
 
     private fun initView(){
@@ -41,7 +43,14 @@ class CategoryListFragment : Fragment() {
         }
 
     }
-    fun categoryListData() {
+
+    private fun handleEvents() {
+        binding?.toolbar?.ivBag?.setOnClickListener {
+            findNavController().navigate(R.id.filterBottomSheetFragment)
+        }
+    }
+
+    private fun categoryListData() {
 
         val subList= listOf(
             BannerCategoryItem(R.drawable.banner_),

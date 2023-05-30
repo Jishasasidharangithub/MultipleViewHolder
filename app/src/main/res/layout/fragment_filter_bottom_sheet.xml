@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.FilterBottomSheetFragment">
+
+    <TextView
+        android:id="@+id/tvFilterBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/largeTextSemiBold"
+        android:padding="@dimen/_15sdp"
+        android:text="Filter by"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFilterBy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/filterView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/Grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFilterBy" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFilterCategorySet"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnClearAll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFilterBy"
+        tools:listitem="@layout/item_filter_set" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFilterCategoryDescriptionSet"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnApplyFilter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/rvFilterCategorySet"
+        app:layout_constraintTop_toBottomOf="@+id/filterView"
+        tools:listitem="@layout/item_filter_set_description" />
+
+    <TextView
+        android:id="@+id/btnClearAll"
+        style="@style/mediumTextMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:padding="@dimen/_15sdp"
+        android:text="CLEAR ALL"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rvFilterCategorySet"
+        app:layout_constraintStart_toStartOf="@+id/rvFilterCategorySet"
+        />
+
+    <TextView
+        android:id="@+id/btnApplyFilter"
+        style="@style/mediumTextMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:padding="@dimen/_15sdp"
+        android:text="APPLY FILTERS"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/btnClearAll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnClearAll"
+        app:layout_constraintTop_toTopOf="@+id/btnClearAll" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

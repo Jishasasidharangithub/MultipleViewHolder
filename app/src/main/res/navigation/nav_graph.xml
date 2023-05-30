@@ -3,13 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/detailFragment">
+    app:startDestination="@id/categoryListFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.template.tmp02.ui.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_filterBottomSheetFragment"
+            app:destination="@id/filterBottomSheetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.template.tmp02.ui.fragment.LoginFragment"
@@ -35,7 +45,11 @@
         android:id="@+id/categoryListFragment"
         android:name="com.template.tmp02.ui.fragment.CategoryListFragment"
         android:label="fragment_category_list"
-        tools:layout="@layout/fragment_category_list" />
+        tools:layout="@layout/fragment_category_list" >
+        <action
+            android:id="@+id/action_categoryListFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.template.tmp02.ui.fragment.CartFragment"
@@ -46,4 +60,9 @@
         android:name="com.template.tmp02.ui.fragment.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
+    <dialog
+        android:id="@+id/filterBottomSheetFragment"
+        android:name="com.template.tmp02.ui.fragment.FilterBottomSheetFragment"
+        android:label="fragment_filter_bottom_sheet"
+        tools:layout="@layout/fragment_filter_bottom_sheet" />
 </navigation>

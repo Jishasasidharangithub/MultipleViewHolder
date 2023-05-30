@@ -84,6 +84,7 @@ class HomeMainCategoryAdapter :
                     )
                 )
             }
+
             else -> throw java.lang.Exception("Unknown ViewType Found!  in MainCategoryAdapter.kt")
         }
     }
@@ -96,7 +97,6 @@ class HomeMainCategoryAdapter :
             is HomeCategoryViewHolder.HomeShopByCategoryViewHolder -> holder.bind(data as HomeMainCategoryData.HomeShopByCategory)
             is HomeCategoryViewHolder.HomeBrandViewHolder -> holder.bind(data as HomeMainCategoryData.HomeBrand)
             is HomeCategoryViewHolder.HomeBestSellerViewHolder -> holder.bind(data as HomeMainCategoryData.HomeBestSeller)
-
         }
     }
 
@@ -121,8 +121,6 @@ class HomeMainCategoryAdapter :
                 oldItem is HomeMainCategoryData.HomeBestSeller && newItem is HomeMainCategoryData.HomeBestSeller -> {
                     oldItem.id == newItem.id
                 }
-
-
                 else -> false
             }
         }
@@ -147,7 +145,6 @@ class HomeMainCategoryAdapter :
                 oldItem is HomeMainCategoryData.HomeBestSeller && newItem is HomeMainCategoryData.HomeBestSeller -> {
                     oldItem == newItem
                 }
-
                 else -> false
             }
         }

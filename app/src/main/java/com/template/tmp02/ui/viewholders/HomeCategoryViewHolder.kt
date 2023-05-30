@@ -13,6 +13,7 @@ import com.template.tmp02.databinding.ItemHomeViewpagerBinding
 import com.template.tmp02.databinding.ItemMainCategoryRcvBinding
 import com.template.tmp02.databinding.ItemMainHomeBestSellerRcvBinding
 import com.template.tmp02.databinding.ItemMainHomeCategoryBinding
+import com.template.tmp02.databinding.LayoutNavigationDrawerBinding
 import com.template.tmp02.ui.adapter.*
 import com.template.tmp02.ui.modelclass.HomeMainCategoryData
 import com.template.tmp02.ui.modelclass.MainCategoryData

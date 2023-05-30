@@ -32,4 +32,5 @@ sealed class HomeMainCategoryData {
         val title:String,
         val homeBestSellerList: List<HomeBestSellerItem>
     ): HomeMainCategoryData()
+
 }
