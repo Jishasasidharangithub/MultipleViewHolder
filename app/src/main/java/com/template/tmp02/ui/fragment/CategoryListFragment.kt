@@ -4,28 +4,45 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.template.tmp02.R
 import com.template.tmp02.databinding.FragmentCategoryListBinding
 import com.template.tmp02.ui.adapter.MainCategoryAdapter
+import com.template.tmp02.ui.adapter.ShopByCategoryAdapter
 import com.template.tmp02.ui.modelclass.BannerCategoryItem
 import com.template.tmp02.ui.modelclass.MainCategoryData
 import com.template.tmp02.ui.modelclass.ProductByCategoryItem
 import com.template.tmp02.ui.modelclass.ShopByCategoryItem
+import com.template.tmp02.ui.viewholders.MainCategoryListener
 
 
 class CategoryListFragment : Fragment() {
-
-    private val mainCategoryAdapter: MainCategoryAdapter by lazy { MainCategoryAdapter() }
-    private var binding: FragmentCategoryListBinding?=null
+    private val listener = object : MainCategoryListener {
+        override fun onItemClick(item: MainCategoryData, pos: Int) {
+            when (item) {
+                is MainCategoryData.ShopByCategory -> {
+                    val clickedItem = item.categoryList.getOrNull(pos)
+                    findNavController().navigate(R.id.detailFragment)
+                }
+                is MainCategoryData.ProductByCategory -> {
+                    val clickedItem = item.productList.getOrNull(pos)
+                    Toast.makeText(requireContext(), "${clickedItem?.aed}", Toast.LENGTH_SHORT).show()
+                }
+                else -> {}
+            }
+        }
+    }
+    private val mainCategoryAdapter: MainCategoryAdapter by lazy { MainCategoryAdapter(listener) }
+    private var binding: FragmentCategoryListBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding= FragmentCategoryListBinding.inflate(inflater,container,false)
+        binding = FragmentCategoryListBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -35,9 +52,10 @@ class CategoryListFragment : Fragment() {
         handleEvents()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding?.rvSet?.apply {
-            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = mainCategoryAdapter
             categoryListData()
         }
@@ -52,7 +70,7 @@ class CategoryListFragment : Fragment() {
 
     private fun categoryListData() {
 
-        val subList= listOf(
+        val subList = listOf(
             BannerCategoryItem(R.drawable.banner_),
             BannerCategoryItem(R.drawable.banner_),
             BannerCategoryItem(R.drawable.banner_)
@@ -105,10 +123,10 @@ class CategoryListFragment : Fragment() {
 
         val mainList = listOf(
             MainCategoryData.BannerCategory(1, subList),
-            MainCategoryData.ShopByCategory(2,"SHOP BY CATEGORIES", subList2),
-            MainCategoryData.ProductByCategory(3,"CARDIAC CARE", subList3),
+            MainCategoryData.ShopByCategory(2, "SHOP BY CATEGORIES", subList2),
+            MainCategoryData.ProductByCategory(3, "CARDIAC CARE", subList3),
 
-        )
+            )
 
         mainCategoryAdapter.submitList(mainList)
     }

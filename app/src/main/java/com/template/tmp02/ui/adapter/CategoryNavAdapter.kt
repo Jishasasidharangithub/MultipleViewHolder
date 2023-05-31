@@ -10,7 +10,7 @@ import com.template.tmp02.R
 import com.template.tmp02.databinding.ItemNavdrawerBinding
 import com.template.tmp02.ui.modelclass.CategoriesNavItem
 
-class CategoryNavAdapter(private val listener: CategoryNavAdapterListener) :
+class CategoryNavAdapter() :
     RecyclerView.Adapter<CategoryNavAdapter.CategoryNavViewHolder>() {
 
     private val categoryNavItems = mutableListOf<CategoriesNavItem>()
@@ -75,10 +75,5 @@ class CategoryNavAdapter(private val listener: CategoryNavAdapterListener) :
         }
     }
 
-    interface CategoryNavAdapterListener {
-        fun viewMoreClick(categoryNavItem: CategoriesNavItem, pos: Int) {
-
-        }
-    }
 
 }

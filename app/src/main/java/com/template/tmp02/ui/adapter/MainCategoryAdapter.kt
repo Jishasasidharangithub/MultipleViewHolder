@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import com.template.tmp02.databinding.ItemMainCategoryRcvBinding
 import com.template.tmp02.databinding.ItemMainViewpagerBinding
 import com.template.tmp02.ui.modelclass.MainCategoryData
+import com.template.tmp02.ui.viewholders.MainCategoryListener
 import com.template.tmp02.ui.viewholders.MainCategoryViewHolders
 
-class MainCategoryAdapter :
+class MainCategoryAdapter(private var listener: MainCategoryListener ) :
     ListAdapter<MainCategoryData, MainCategoryViewHolders>(DiffUtilCallback()) {
 
     companion object {
@@ -61,6 +62,7 @@ class MainCategoryAdapter :
     }
 
     override fun onBindViewHolder(holder: MainCategoryViewHolders, position: Int) {
+        holder.mainCategoryVHListener = listener
         val data = getItem(position)
         when (holder) {
             is MainCategoryViewHolders.BannerCategoryViewHolder -> holder.bind(data as MainCategoryData.BannerCategory)

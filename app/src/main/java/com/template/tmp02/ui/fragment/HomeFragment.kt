@@ -1,29 +1,38 @@
 package com.template.tmp02.ui.fragment
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.navigation.NavigationView
 import com.template.tmp02.R
 import com.template.tmp02.databinding.FragmentHomeBinding
 import com.template.tmp02.ui.adapter.CategoryNavAdapter
 import com.template.tmp02.ui.adapter.HomeMainCategoryAdapter
-import com.template.tmp02.ui.adapter.MainCategoryAdapter
 import com.template.tmp02.ui.modelclass.*
+import com.template.tmp02.ui.viewholders.HomeCategoryListener
 
-class HomeFragment : Fragment(), CategoryNavAdapter.CategoryNavAdapterListener {
+
+class HomeFragment : Fragment(){
+
+    private val listener = object : HomeCategoryListener {
+        override fun onItemClick(item: HomeMainCategoryData, pos: Int) {
+            when (item) {
+                is HomeMainCategoryData.HomeShopByNeedCategory -> {
+                    val clickedItem = item.image1
+                    findNavController().navigate(R.id.categoryListFragment)
+                }
+                else -> {}
+            }
+        }
+    }
     private var binding: FragmentHomeBinding? = null
-    private val homemainCategoryAdapter: HomeMainCategoryAdapter by lazy { HomeMainCategoryAdapter() }
-    private val categoryNavAdapter: CategoryNavAdapter by lazy { CategoryNavAdapter(this) }
+    private val homemainCategoryAdapter: HomeMainCategoryAdapter by lazy { HomeMainCategoryAdapter(listener) }
+
+    private val categoryNavAdapter: CategoryNavAdapter by lazy { CategoryNavAdapter() }
 
     private var categoryNavItem = mutableListOf<CategoriesNavItem>()
 
@@ -58,7 +67,7 @@ class HomeFragment : Fragment(), CategoryNavAdapter.CategoryNavAdapterListener {
         }
     }
 
-    private fun handleEvents(){
+    private fun handleEvents() {
 
         binding?.toolbar?.ivMenu?.setOnClickListener {
             binding?.drawerLayout?.openDrawer(Gravity.LEFT)
@@ -70,10 +79,9 @@ class HomeFragment : Fragment(), CategoryNavAdapter.CategoryNavAdapterListener {
             else
                 binding?.navDrawer?.rvCategorySet?.visibility = View.VISIBLE
         }
-
     }
 
-    private fun categoryNavData(){
+    private fun categoryNavData() {
         val categoryNavItem = listOf(
             CategoriesNavItem(
                 "Skin Care"
@@ -171,12 +179,8 @@ class HomeFragment : Fragment(), CategoryNavAdapter.CategoryNavAdapterListener {
             HomeMainCategoryData.HomeShopByCategory(3, "SHOP BY CATEGORY", subList1),
             HomeMainCategoryData.HomeBrand(4, "BRAND", subList2),
             HomeMainCategoryData.HomeBestSeller(5, "BEST SELLERS", subList3)
-            )
+        )
         homemainCategoryAdapter.submitList(mainList)
-    }
-
-    override fun viewMoreClick(categoryNavItem: CategoriesNavItem, pos: Int) {
-
     }
 
 

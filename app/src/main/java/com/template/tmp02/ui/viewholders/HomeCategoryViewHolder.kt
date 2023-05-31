@@ -22,7 +22,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-open class HomeCategoryViewHolder (binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
+open class HomeCategoryViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    var homeCategoryVHListener: HomeCategoryListener? = null
 
     class HomeBannerCategoryViewHolder(val binding: ItemHomeViewpagerBinding) :
         HomeCategoryViewHolder(binding) {
@@ -52,11 +54,13 @@ open class HomeCategoryViewHolder (binding: ViewBinding) : RecyclerView.ViewHold
             }
             homebannerViewPager.updateList(item.homebannerList)
         }
+
         fun ViewPager2.autoScroll(interval: Long) {
             CoroutineScope(Dispatchers.IO).launch {
                 scrollIndefinitely(interval)
             }
         }
+
         private suspend fun ViewPager2.scrollIndefinitely(interval: Long) {
             try {
                 while (true) {
@@ -80,7 +84,24 @@ open class HomeCategoryViewHolder (binding: ViewBinding) : RecyclerView.ViewHold
             binding.ivCardiacCare.setImageResource(item.image1)
             binding.ivOralCare.setImageResource(item.image2)
             binding.ivElderlyCare.setImageResource(item.image3)
-
+            binding.ivCardiacCare.setOnClickListener {
+                homeCategoryVHListener?.onItemClick(
+                    item,
+                    1
+                )
+            }
+            binding.ivOralCare.setOnClickListener {
+                homeCategoryVHListener?.onItemClick(
+                    item,
+                    2
+                )
+            }
+            binding.ivElderlyCare.setOnClickListener {
+                homeCategoryVHListener?.onItemClick(
+                    item,
+                    3
+                )
+            }
         }
     }
 
@@ -91,7 +112,8 @@ open class HomeCategoryViewHolder (binding: ViewBinding) : RecyclerView.ViewHold
             val a = HomeShopByCategoryAdapter()
             binding.recyclerView.apply {
                 adapter = a
-                layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL,false)
+                layoutManager =
+                    LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             }
             a.updateList(item.homeShopByCategoryList)
         }
@@ -101,10 +123,11 @@ open class HomeCategoryViewHolder (binding: ViewBinding) : RecyclerView.ViewHold
         HomeCategoryViewHolder(binding) {
         fun bind(item: HomeMainCategoryData.HomeBrand) {
             binding.tvTitle.text = item.title
-                val a = HomeBrandAdapter()
+            val a = HomeBrandAdapter()
             binding.recyclerView.apply {
                 adapter = a
-                layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL,false)
+                layoutManager =
+                    LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             }
             a.updateList(item.homeBrandList)
         }
@@ -122,5 +145,8 @@ open class HomeCategoryViewHolder (binding: ViewBinding) : RecyclerView.ViewHold
             a.updateList(item.homeBestSellerList)
         }
     }
+}
 
+interface HomeCategoryListener {
+    fun onItemClick(item: HomeMainCategoryData, pos: Int)
 }

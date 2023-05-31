@@ -5,13 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.template.tmp02.databinding.*
-import com.template.tmp02.ui.modelclass.CartItem
 import com.template.tmp02.ui.modelclass.HomeMainCategoryData
-import com.template.tmp02.ui.modelclass.MainCategoryData
+import com.template.tmp02.ui.viewholders.HomeCategoryListener
 import com.template.tmp02.ui.viewholders.HomeCategoryViewHolder
-import com.template.tmp02.ui.viewholders.MainCategoryViewHolders
 
-class HomeMainCategoryAdapter :
+class HomeMainCategoryAdapter(private var listener: HomeCategoryListener) :
     ListAdapter<HomeMainCategoryData, HomeCategoryViewHolder>(DiffUtilCallback()) {
 
     companion object {
@@ -91,6 +89,7 @@ class HomeMainCategoryAdapter :
 
     override fun onBindViewHolder(holder: HomeCategoryViewHolder, position: Int) {
         val data = getItem(position)
+        holder.homeCategoryVHListener = listener
         when (holder) {
             is HomeCategoryViewHolder.HomeBannerCategoryViewHolder -> holder.bind(data as HomeMainCategoryData.HomeBannerCategory)
             is HomeCategoryViewHolder.ShopByNeedsCategoryViewHolder -> holder.bind(data as HomeMainCategoryData.HomeShopByNeedCategory)

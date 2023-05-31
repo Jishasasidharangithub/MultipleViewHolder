@@ -19,26 +19,31 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 open class MainCategoryViewHolders(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
-
+    var mainCategoryVHListener: MainCategoryListener? = null
 
     class ShopByCategoryViewHolder(private val binding: ItemMainCategoryRcvBinding) :
         MainCategoryViewHolders(binding) {
         fun bind(item: MainCategoryData.ShopByCategory) {
             binding.tvTitle.text = item.title
-            val a = ShopByCategoryAdapter()
+            val a = ShopByCategoryAdapter { pos ->
+                mainCategoryVHListener?.onItemClick(item, pos)
+            }
             binding.recyclerView.apply {
                 adapter = a
                 layoutManager = GridLayoutManager(binding.root.context, 2)
             }
             a.updateList(item.categoryList)
         }
+
     }
 
     class ProductByCategoryViewHolder(val binding: ItemMainCategoryRcvBinding) :
         MainCategoryViewHolders(binding) {
         fun bind(item: MainCategoryData.ProductByCategory) {
             binding.tvTitle.text = item.title
-            val a = ProductByCategoryAdapter()
+            val a = ProductByCategoryAdapter { pos ->
+                mainCategoryVHListener?.onItemClick(item, pos)
+            }
             binding.recyclerView.apply {
                 adapter = a
                 layoutManager = GridLayoutManager(binding.root.context, 2)
@@ -75,11 +80,13 @@ open class MainCategoryViewHolders(binding: ViewBinding) : RecyclerView.ViewHold
             }
             bannerViewPager.updateList(item.bannerList)
         }
+
         fun ViewPager2.autoScroll(interval: Long) {
             CoroutineScope(Dispatchers.IO).launch {
                 scrollIndefinitely(interval)
             }
         }
+
         private suspend fun ViewPager2.scrollIndefinitely(interval: Long) {
             try {
                 while (true) {
@@ -95,4 +102,9 @@ open class MainCategoryViewHolders(binding: ViewBinding) : RecyclerView.ViewHold
             }
         }
     }
+
+}
+
+interface MainCategoryListener {
+    fun onItemClick(item: MainCategoryData, pos: Int)
 }

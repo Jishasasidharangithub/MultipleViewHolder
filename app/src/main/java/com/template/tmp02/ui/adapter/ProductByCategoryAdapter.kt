@@ -3,10 +3,11 @@ package com.template.tmp02.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
- import com.template.tmp02.databinding.ItemProductByCategoryRcvBinding
+import com.template.tmp02.databinding.ItemProductByCategoryRcvBinding
 import com.template.tmp02.ui.modelclass.ProductByCategoryItem
+import com.template.tmp02.ui.viewholders.MainCategoryListener
 
-class ProductByCategoryAdapter() :
+class ProductByCategoryAdapter(private val itemClick: (position:Int) -> Unit) :
     RecyclerView.Adapter<ProductByCategoryAdapter.SubCardiacCareViewHolder>() {
 
     private val products = mutableListOf<ProductByCategoryItem>()
@@ -16,7 +17,11 @@ class ProductByCategoryAdapter() :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubCardiacCareViewHolder {
         return SubCardiacCareViewHolder(
-            ItemProductByCategoryRcvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemProductByCategoryRcvBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
     }
 
@@ -35,6 +40,9 @@ class ProductByCategoryAdapter() :
             holder.binding.tvAED.text = aed
             holder.binding.ivCardiacCare.setImageResource(image)
             holder.binding.tvCardiacCareDescription.text = description
+            holder.binding.root.setOnClickListener {
+                itemClick.invoke(holder.bindingAdapterPosition)
+            }
         }
     }
 }

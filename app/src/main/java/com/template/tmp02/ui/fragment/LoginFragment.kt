@@ -21,7 +21,7 @@ class LoginFragment : Fragment() {
         return binding?.root
     }
 
-    val fragmentList = arrayListOf<Fragment>(
+    private val fragmentList = arrayListOf<Fragment>(
         SignInFragment(),
         SignUpFragment()
     )
@@ -38,11 +38,11 @@ class LoginFragment : Fragment() {
 
         binding?.vpLogin?.adapter = adapter
 
-        moveTonext()
+        moveToNext()
 
     }
 
-    private fun moveTonext() {
+    private fun moveToNext() {
         var currentPos=binding?.vpLogin?.currentItem ?: 0
         currentPos++
         if (currentPos < fragmentList.size){
